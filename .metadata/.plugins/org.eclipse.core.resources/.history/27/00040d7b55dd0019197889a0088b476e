@@ -1,0 +1,54 @@
+package br.com.sandbox;
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.ibm.mq.samples.jms.JmsPutGet;
+
+
+/****
+ * @author vinic
+ *
+ *****/
+
+@WebServlet(urlPatterns="/MessageInterface")
+public class MessageInterface extends HttpServlet  {
+
+	/**
+	 * @param args
+	 */
+	
+	
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		//Get The Last Message from MQ
+
+		
+		//JmsPutGet jmsPutGet = new JmsPutGet();
+		//String lastMessage = jmsPutGet.getMessage();	
+		String lastMessage = "lalalala";
+
+		PrintWriter writer = resp.getWriter();
+		
+		
+		writer.println("<li>");
+		writer.println(lastMessage);
+		writer.println("</li>");
+		
+	} 
+	
+	@Override
+	protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		//Insert a new message in MQ
+		super.doPut(req, resp);
+	}
+
+	
+	
+
+}

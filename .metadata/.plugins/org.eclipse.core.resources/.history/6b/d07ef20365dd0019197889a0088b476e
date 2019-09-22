@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="Sandbox">
+        <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
+        <dependent-module archiveName="IBMMQ.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/IBMMQ/IBMMQ">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="javax.jms-api-2.0.1.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/IBMMQ/library/javax.jms-api-2.0.1.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <property name="context-root" value="Sandbox"/>
+        <property name="java-output-path" value="/Sandbox/build/classes"/>
+    </wb-module>
+</project-modules>

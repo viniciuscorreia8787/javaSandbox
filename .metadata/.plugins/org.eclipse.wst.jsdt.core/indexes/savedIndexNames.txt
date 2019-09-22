@@ -1,0 +1,8 @@
+INDEX VERSION 1.4+/home/vinic/Documents/Development/javaSandbox/.metadata/.plugins/org.eclipse.wst.jsdt.core/indexes
+3677941334.index
+3834511341.index
+3729150083.index
+1528938762.index
+2757812997.index
+4048533526.index
+1447769493.index

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html >
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="./dojo/dojo-release-1.13.0/dijit/themes/claro/claro.css">
+	<script>dojoConfig = {parseOnLoad: true}</script>
+	<script src='./dojo/dojo-release-1.13.0/dojo/dojo.js'></script>
+
+	<script>
+		dojo.require("dijit.dijit");
+		dojo.require("dojox.layout.TableContainer");
+		dojo.require("dijit.form.TextBox");
+		dojo.require("dijit.form.CheckBox");
+		dojo.require("dijit.form.NumberSpinner");
+	</script>
+
+	
+	<script>
+		require(["dijit/form/Button", "dojo/dom", "dojo/request", "dojo/domReady!"], function(Button, dom, request){
+			
+			// Creates GetLastMessage Button Programmatically:
+	    	var getLastMessage = new Button({
+	      	label: "Obter Última Mensagem",
+	        	onClick: function(){
+	         		// Do something:
+	         		request("MessageInterface").then(function(messageReturned){
+		        		console.log("The server returned: ", messageReturned);
+		        		dom.byId("result1").innerHTML += "Última mensagem da fila: " + messageReturned;
+		    		});
+	        	}
+	   		}, "btnGetMessage").startup();
+		
+			// Creates PutMessage Button Programmatically:
+	    	var putLastMessage = new Button({
+	      	label: "Inserir Mensagem",
+	        	onClick: function(){
+	         		// Do something:
+	         				         			
+	         		request.post("MessageInterface", {
+	         			data: {
+	         			    firstName: dom.byId("name").value,
+	         			    lastName: dom.byId("lastName").value,
+	         			    employed: dom.byId("employed").value,
+	         			    age: dom.byId("age").value
+	         			}
+					}).then(function(messageReturned){
+		        		console.log("The server returned: ", messageReturned);
+		        		dom.byId("result1").innerHTML += "Última mensagem da fila: " + messageReturned;
+		    		});
+	        	}
+	   		}, "btnPutMessage").startup();
+		});
+	</script>
+
+	
+</head>
+
+<body class="claro">	
+	<div data-dojo-type="dojox.layout.TableContainer" data-dojo-props="cols:1" id="tc1">
+		<div data-dojo-type="dijit.form.TextBox" title="First Name:" value="Michael" id="name"></div>
+		<div data-dojo-type="dijit.form.TextBox" title="Last Name:" value="Collins" id="lastName"></div>
+		<div data-dojo-type="dijit.form.CheckBox" title="Employed" id="employed"></div>
+		<div data-dojo-type="dijit.form.NumberSpinner" title="Age" value="25" id="age"></div>
+	</div>
+
+	<button id="btnPutMessage" type="button"></button>
+
+
+	<button id="btnGetMessage" type="button"></button>
+	<div id="result1"></div>
+</body>
+</html>
